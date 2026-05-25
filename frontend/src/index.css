@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── DARK THEME (default) ───────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --bg: #020408;
+  --bg-gradient: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,229,255,0.07) 0%, transparent 60%),
+                 radial-gradient(ellipse 60% 40% at 80% 100%, rgba(157,0,255,0.06) 0%, transparent 60%),
+                 #020408;
+  --cyan: #00E5FF;
+  --violet: #9D00FF;
+  --success: #00FF88;
+  --danger: #FF3366;
+  --surface: rgba(255,255,255,0.03);
+  --surface-hover: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.15);
+  --text-primary: rgba(255,255,255,0.92);
+  --text-secondary: rgba(255,255,255,0.55);
+  --text-muted: rgba(255,255,255,0.28);
+  --sidebar-bg: rgba(2,4,8,0.9);
+  --topbar-bg: rgba(2,4,8,0.7);
+  --input-bg: rgba(255,255,255,0.04);
+  --input-border: rgba(255,255,255,0.1);
+  --scrollbar-thumb: rgba(0,229,255,0.25);
+  --scrollbar-thumb-hover: rgba(0,229,255,0.5);
+  --card-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --chat-user-bg: rgba(255,255,255,0.06);
+  --chat-user-border: rgba(255,255,255,0.1);
+  --chat-assistant-bg: rgba(0,229,255,0.04);
+  --chat-assistant-border: rgba(0,229,255,0.12);
+  --badge-mono-bg: rgba(0,229,255,0.08);
+  --badge-mono-color: #00E5FF;
+  --badge-mono-border: rgba(0,229,255,0.2);
+  --metric-orb-opacity: 0.18;
+  --live-row-hover: rgba(255,255,255,0.02);
+  --empty-icon-filter: drop-shadow(0 0 24px rgba(0,229,255,0.3));
+}
+
+/* ─── LIGHT THEME ────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg: #f0f4f8;
+  --bg-gradient: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,180,200,0.09) 0%, transparent 60%),
+                 radial-gradient(ellipse 60% 40% at 80% 100%, rgba(120,60,200,0.06) 0%, transparent 60%),
+                 #f0f4f8;
+  --cyan: #007B9E;
+  --violet: #6B00CC;
+  --success: #007A42;
+  --danger: #CC1144;
+  --surface: rgba(255,255,255,0.75);
+  --surface-hover: rgba(255,255,255,0.95);
+  --border: rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.18);
+  --text-primary: rgba(10,15,30,0.92);
+  --text-secondary: rgba(10,15,30,0.55);
+  --text-muted: rgba(10,15,30,0.35);
+  --sidebar-bg: rgba(255,255,255,0.88);
+  --topbar-bg: rgba(255,255,255,0.75);
+  --input-bg: rgba(255,255,255,0.8);
+  --input-border: rgba(0,0,0,0.12);
+  --scrollbar-thumb: rgba(0,123,158,0.25);
+  --scrollbar-thumb-hover: rgba(0,123,158,0.5);
+  --card-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --chat-user-bg: rgba(0,123,158,0.08);
+  --chat-user-border: rgba(0,123,158,0.15);
+  --chat-assistant-bg: rgba(255,255,255,0.9);
+  --chat-assistant-border: rgba(0,123,158,0.2);
+  --badge-mono-bg: rgba(0,123,158,0.08);
+  --badge-mono-color: #007B9E;
+  --badge-mono-border: rgba(0,123,158,0.2);
+  --metric-orb-opacity: 0.12;
+  --live-row-hover: rgba(0,0,0,0.02);
+  --empty-icon-filter: drop-shadow(0 0 16px rgba(0,123,158,0.2));
+}
+
+/* ─── BASE ────────────────────────────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+*::-webkit-scrollbar { width: 4px; height: 4px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 2px; }
+*::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
+
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body {
+  background: var(--bg-gradient);
+  min-height: 100vh;
+}
+
+/* ─── CARD ─────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-glow {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 24px rgba(0,229,255,0.12), var(--card-shadow);
+  transform: translateY(-2px);
+}
+[data-theme="light"] .card-glow:hover {
+  box-shadow: 0 0 20px rgba(0,123,158,0.12), var(--card-shadow);
+}
+
+/* ─── BADGE ────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border: 1px solid;
+}
+
+/* ─── PULSE DOT ─────────────────────────────────────────────────────── */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulseDot 2s ease-in-out infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.3); }
+}
+
+/* ─── SLIDE IN ──────────────────────────────────────────────────────── */
+@keyframes slideInTop {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.slide-in-top { animation: slideInTop 0.3s ease; }
+
+/* ─── TYPOGRAPHY ────────────────────────────────────────────────────── */
+.font-heading { font-family: 'Syne', sans-serif; }
+.font-mono    { font-family: 'Space Mono', monospace; }
+
+/* ─── CHAT BUBBLES ──────────────────────────────────────────────────── */
+.chat-bubble-user {
+  background: var(--chat-user-bg);
+  border: 1px solid var(--chat-user-border);
+  border-radius: 16px 16px 4px 16px;
+}
+.chat-bubble-assistant {
+  background: var(--chat-assistant-bg);
+  border: 1px solid var(--chat-assistant-border);
+  border-left: 2px solid var(--cyan);
+  border-radius: 16px 16px 16px 4px;
+}
+
+/* ─── TYPING INDICATOR ──────────────────────────────────────────────── */
+.typing-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: typingBounce 1.2s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30%           { transform: translateY(-6px); opacity: 1; }
+}
+
+/* ─── METRIC CARD PULSE ─────────────────────────────────────────────── */
+.metric-card-pulse {
+  animation: metricPulse 3s ease-in-out infinite;
+}
+@keyframes metricPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,229,255,0.08), var(--card-shadow); }
+  50%       { box-shadow: 0 0 20px 2px rgba(0,229,255,0.06), var(--card-shadow); }
+}
+[data-theme="light"] .metric-card-pulse {
+  animation: metricPulseLight 3s ease-in-out infinite;
+}
+@keyframes metricPulseLight {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,123,158,0.06), var(--card-shadow); }
+  50%       { box-shadow: 0 0 16px 2px rgba(0,123,158,0.08), var(--card-shadow); }
+}
+
+/* ─── INPUTS ────────────────────────────────────────────────────────── */
+input, textarea, select {
+  outline: none;
+  background: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+}
+input:focus, textarea:focus {
+  box-shadow: 0 0 0 1px rgba(0,229,255,0.4);
+}
+[data-theme="light"] input:focus,
+[data-theme="light"] textarea:focus {
+  box-shadow: 0 0 0 1px rgba(0,123,158,0.4);
+}
+
+/* ─── COPY BUTTON ───────────────────────────────────────────────────── */
+.copy-btn {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.group:hover .copy-btn,
+.copy-btn:focus {
+  opacity: 1;
+}

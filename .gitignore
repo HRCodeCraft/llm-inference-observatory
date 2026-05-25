@@ -1,0 +1,39 @@
+# Environment / secrets
+.env
+.env.*
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+.pytest_cache/
+
+# Node
+node_modules/
+frontend/node_modules/
+sdk/node_modules/
+sdk/dist/
+frontend/dist/
+
+# Logs
+*.log
+.ingestion.log
+.frontend.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Alembic
+ingestion/alembic/versions/__pycache__/
