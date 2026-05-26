@@ -37,3 +37,6 @@ Thumbs.db
 
 # Alembic
 ingestion/alembic/versions/__pycache__/
+
+# Temp scripts
+get-docker.sh
